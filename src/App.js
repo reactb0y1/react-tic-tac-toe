@@ -14,7 +14,8 @@ function App() {
         {id: 8, player: null},
     ];
     const [squares, setSquares] = useState(defaultSquares);
-    const [count, setCount] = useState(0);
+    const [countStep, setCountStep] = useState(0);
+    const [scores, setScores] = useState({X: 0, O: 0});
     const winnerLine = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
         [0, 3, 6], [1, 4, 7], [2, 5, 8],
@@ -35,27 +36,33 @@ function App() {
 
     const clickHandler = e => {
         const num = e.target.dataset.num;
-        const player = count % 2 === 0 ? 'X' : 'O';
+        const player = countStep % 2 === 0 ? 'X' : 'O';
 
         if (!squares[num].player) {
             squares[num].player = player;
-            setCount(count + 1);
+            setCountStep(countStep + 1);
             setSquares(squares)
         }
 
         const winner = isWinner(player);
 
         if (winner) {
-            setTimeout(() => alert(winner + ' win'), 0);
             setTimeout(reset, 1000);
+            scores[player] = scores[player] + 1;
+            setScores(scores)
         }
     };
 
     const reset = () => {
-        setCount(0);
+        setCountStep(0);
         setSquares(defaultSquares);
     };
-    
+
+    const totalReset = () => {
+        reset();
+        setScores({X: 0, O: 0})
+    };
+
     const setList = squares.map(item => {
         const id = item.id;
         return (
@@ -69,18 +76,25 @@ function App() {
     });
 
     return (
-        <div className="tic-tac-toe container">
+        <>
+            <header className="header">
+                <div className="player">
+                    <h3 className="player__name">X</h3>
+                    <p className="player__count">{scores.X}</p>
+                </div>
+                <button className="btn btn-reset" onClick={totalReset}>Reset</button>
+                <div className="player player--reverse">
+                    <h3 className="player__name">O</h3>
+                    <p className="player__count">{scores.O}</p>
+                </div>
+            </header>
 
-            <button
-                className="tic-tac-toe__reset"
-                onClick={reset}
-            >Reset</button>
-
-            <ul className="tic-tac-toe__list">
-                {setList}
-            </ul>
-
-        </div>
+            <div className="tic-tac-toe container">
+                <ul className="tic-tac-toe__list">
+                    {setList}
+                </ul>
+            </div>
+        </>
     );
 }
 
