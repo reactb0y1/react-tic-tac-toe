@@ -31,7 +31,15 @@ function App() {
             return itemSome.every(itemEvery => squaresPlayer.includes(itemEvery))
         });
 
-        return win && player
+        const draw = squares.every(square => square.player !== null);
+
+        if (draw) {
+            return 'draw';
+        }
+
+        if (win) {
+            return player;
+        }
     };
 
     const clickHandler = e => {
@@ -46,7 +54,9 @@ function App() {
 
         const winner = isWinner(player);
 
-        if (winner) {
+        if (winner === 'draw') {
+            setTimeout(reset, 1000);
+        } else if (winner) {
             setTimeout(reset, 1000);
             scores[player] = scores[player] + 1;
             setScores(scores)
