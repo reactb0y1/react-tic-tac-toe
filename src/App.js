@@ -47,11 +47,13 @@ function App() {
 
         if (winner) {
             setTimeout(() => alert(winner + ' win'), 0);
-            setTimeout(() => {
-                setCount(0);
-                setSquares(defaultSquares);
-            }, 1000);
+            setTimeout(reset, 1000);
         }
+    };
+
+    const reset = () => {
+        setCount(0);
+        setSquares(defaultSquares);
     };
     
     const setList = squares.map(item => {
@@ -67,9 +69,18 @@ function App() {
     });
 
     return (
-        <ul className="tic-tac-toe">
-            {setList}
-        </ul>
+        <div className="tic-tac-toe container">
+
+            <button
+                className="tic-tac-toe__reset"
+                onClick={reset}
+            >Reset</button>
+
+            <ul className="tic-tac-toe__list">
+                {setList}
+            </ul>
+
+        </div>
     );
 }
 
