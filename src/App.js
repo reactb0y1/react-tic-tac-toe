@@ -1,78 +1,61 @@
-import React from "react";
+import React, {useState} from "react";
 import './App.css';
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            squares: new Array(9).fill(null),
-            count: 0
-        };
-        this.winnerLine = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8],
-            [0, 3, 6], [1, 4, 7], [2, 5, 8],
-            [0, 4, 8], [2, 4, 6],
-        ];
-    }
+function App() {
+    const [squares, setSquares] = useState(new Array(9).fill(null));
+    const [count, setCount] = useState(0);
+    const winnerLine = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6],
+    ];
 
-    isWinner = player => {
-        const squaresPlayer = this.state.squares.reduce((indexes, item, index) => {
+    const isWinner = player => {
+        const squaresPlayer = squares.reduce((indexes, item, index) => {
             return item === player ? [...indexes, index] : indexes
         }, []);
 
-        const win = this.winnerLine.some(itemSome => {
+        const win = winnerLine.some(itemSome => {
             return itemSome.every(itemEvery => squaresPlayer.includes(itemEvery))
         });
 
         return win && player
     };
 
-    clickHandler = e => {
+    const clickHandler = e => {
         const num = e.target.dataset.num;
-        const currentSquare = this.state.squares;
-        const player = this.state.count % 2 === 0 ? 'X' : 'O';
+        const player = count % 2 === 0 ? 'X' : 'O';
 
-        if (currentSquare[num] === null) {
-            currentSquare[num] = player;
-            this.setState({count: this.state.count + 1});
-            this.setState({squares: currentSquare});
+        if (squares[num] === null) {
+            squares[num] = player;
+            setCount(count + 1);
+            setSquares(squares)
         }
 
-        const winner = this.isWinner(player);
+        const winner = isWinner(player);
 
         if (winner) {
             setTimeout(() => alert(winner + ' win'), 0);
             setTimeout(() => {
-                this.setState({squares: new Array(9).fill(null)});
-                this.setState({count: 0})
+                setCount(0);
+                setSquares(new Array(9).fill(null));
             }, 1000);
         }
     };
 
-    render() {
-        return (
-            <div className="tic-tac-toe">
-                <div className="tic-tac-toe__cell" onClick={this.clickHandler}
-                     data-num="0">{this.state.squares[0]}</div>
-                <div className="tic-tac-toe__cell" onClick={this.clickHandler}
-                     data-num="1">{this.state.squares[1]}</div>
-                <div className="tic-tac-toe__cell" onClick={this.clickHandler}
-                     data-num="2">{this.state.squares[2]}</div>
-                <div className="tic-tac-toe__cell" onClick={this.clickHandler}
-                     data-num="3">{this.state.squares[3]}</div>
-                <div className="tic-tac-toe__cell" onClick={this.clickHandler}
-                     data-num="4">{this.state.squares[4]}</div>
-                <div className="tic-tac-toe__cell" onClick={this.clickHandler}
-                     data-num="5">{this.state.squares[5]}</div>
-                <div className="tic-tac-toe__cell" onClick={this.clickHandler}
-                     data-num="6">{this.state.squares[6]}</div>
-                <div className="tic-tac-toe__cell" onClick={this.clickHandler}
-                     data-num="7">{this.state.squares[7]}</div>
-                <div className="tic-tac-toe__cell" onClick={this.clickHandler}
-                     data-num="8">{this.state.squares[8]}</div>
-            </div>
-        );
-    }
+    return (
+        <div className="tic-tac-toe">
+            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="0">{squares[0]}</div>
+            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="1">{squares[1]}</div>
+            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="2">{squares[2]}</div>
+            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="3">{squares[3]}</div>
+            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="4">{squares[4]}</div>
+            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="5">{squares[5]}</div>
+            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="6">{squares[6]}</div>
+            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="7">{squares[7]}</div>
+            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="8">{squares[8]}</div>
+        </div>
+    );
 }
 
 export default App;
