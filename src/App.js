@@ -16,14 +16,15 @@ class App extends React.Component {
     }
 
     isWinner = player => {
-        for (let i = 0; i < 8; i++) {
-            const line = this.winnerLine[i];
-            if (this.state.squares[line[0]] === player &&
-                this.state.squares[line[1]] === player &&
-                this.state.squares[line[2]] === player) {
-                return player;
-            }
-        }
+        const squaresPlayer = this.state.squares.reduce((indexes, item, index) => {
+            return item === player ? [...indexes, index] : indexes
+        }, []);
+
+        const win = this.winnerLine.some(itemSome => {
+            return itemSome.every(itemEvery => squaresPlayer.includes(itemEvery))
+        });
+
+        return win && player
     };
 
     clickHandler = e => {
