@@ -15,32 +15,37 @@ class App extends React.Component {
         ];
     }
 
-    isWinner = () => {
-        let s = this.state.count % 2 === 0 ? 'X' : 'O';
-
+    isWinner = player => {
         for (let i = 0; i < 8; i++) {
-            let line = this.winnerLine[i];
-            if (this.state.squares[line[0]] === s &&
-                this.state.squares[line[1]] === s &&
-                this.state.squares[line[2]] === s) {
-                alert(s + ' win');
-                setTimeout(() => {
-                    this.setState({squares: new Array(9).fill(null)});
-                    this.setState({count: 0})
-                }, 2000);
+            const line = this.winnerLine[i];
+            if (this.state.squares[line[0]] === player &&
+                this.state.squares[line[1]] === player &&
+                this.state.squares[line[2]] === player) {
+                return player;
             }
         }
     };
 
     clickHandler = e => {
-        let num = e.target.dataset.num;
-        let currentSquare = this.state.squares;
+        const num = e.target.dataset.num;
+        const currentSquare = this.state.squares;
+        const player = this.state.count % 2 === 0 ? 'X' : 'O';
+
         if (currentSquare[num] === null) {
-            currentSquare[num] = this.state.count % 2 === 0 ? 'X' : 'O';
+            currentSquare[num] = player;
             this.setState({count: this.state.count + 1});
             this.setState({squares: currentSquare});
         }
-        this.isWinner();
+
+        const winner = this.isWinner(player);
+
+        if (winner) {
+            setTimeout(() => alert(winner + ' win'), 0);
+            setTimeout(() => {
+                this.setState({squares: new Array(9).fill(null)});
+                this.setState({count: 0})
+            }, 1000);
+        }
     };
 
     render() {
