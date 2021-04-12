@@ -2,7 +2,18 @@ import React, {useState} from "react";
 import './App.css';
 
 function App() {
-    const [squares, setSquares] = useState(new Array(9).fill(null));
+    const defaultSquares = [
+        {id: 0, player: null},
+        {id: 1, player: null},
+        {id: 2, player: null},
+        {id: 3, player: null},
+        {id: 4, player: null},
+        {id: 5, player: null},
+        {id: 6, player: null},
+        {id: 7, player: null},
+        {id: 8, player: null},
+    ];
+    const [squares, setSquares] = useState(defaultSquares);
     const [count, setCount] = useState(0);
     const winnerLine = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -12,7 +23,7 @@ function App() {
 
     const isWinner = player => {
         const squaresPlayer = squares.reduce((indexes, item, index) => {
-            return item === player ? [...indexes, index] : indexes
+            return item.player === player ? [...indexes, index] : indexes
         }, []);
 
         const win = winnerLine.some(itemSome => {
@@ -26,8 +37,8 @@ function App() {
         const num = e.target.dataset.num;
         const player = count % 2 === 0 ? 'X' : 'O';
 
-        if (squares[num] === null) {
-            squares[num] = player;
+        if (!squares[num].player) {
+            squares[num].player = player;
             setCount(count + 1);
             setSquares(squares)
         }
@@ -38,23 +49,27 @@ function App() {
             setTimeout(() => alert(winner + ' win'), 0);
             setTimeout(() => {
                 setCount(0);
-                setSquares(new Array(9).fill(null));
+                setSquares(defaultSquares);
             }, 1000);
         }
     };
+    
+    const setList = squares.map(item => {
+        const id = item.id;
+        return (
+            <li
+                className="tic-tac-toe__cell"
+                onClick={clickHandler}
+                key={id}
+                data-num={id}
+            >{squares[id].player}</li>
+        )
+    });
 
     return (
-        <div className="tic-tac-toe">
-            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="0">{squares[0]}</div>
-            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="1">{squares[1]}</div>
-            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="2">{squares[2]}</div>
-            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="3">{squares[3]}</div>
-            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="4">{squares[4]}</div>
-            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="5">{squares[5]}</div>
-            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="6">{squares[6]}</div>
-            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="7">{squares[7]}</div>
-            <div className="tic-tac-toe__cell" onClick={clickHandler} data-num="8">{squares[8]}</div>
-        </div>
+        <ul className="tic-tac-toe">
+            {setList}
+        </ul>
     );
 }
 
