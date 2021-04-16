@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './App.scss';
+import Header from "./Header/Header";
 
 function App() {
     const defaultSquares = [
@@ -87,18 +88,7 @@ function App() {
 
     return (
         <>
-            <header className="header">
-                <div className="player">
-                    <h3 className="player__name">X</h3>
-                    <p className="player__count">{scores.X}</p>
-                </div>
-                <button className="btn btn-reset" onClick={totalReset}>Reset</button>
-                <div className="player player--reverse">
-                    <h3 className="player__name">O</h3>
-                    <p className="player__count">{scores.O}</p>
-                </div>
-            </header>
-
+            <Header scores={scores} totalReset={totalReset}/>
             <div className="tic-tac-toe container">
                 <ul className="tic-tac-toe__list">
                     {setList}
