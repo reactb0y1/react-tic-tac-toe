@@ -9,20 +9,32 @@ const Mode = ({totalReset}) => {
         {mode: 'players', text: "Player VS Player"},
     ];
 
+    const [unActiveMode, setUnActiveMode] = useState(false);
+
     const [activeMode, setActiveMode] = useState(modes[0].mode);
+
+    const modeChange = bar => {
+        setActiveMode(bar);
+        setUnActiveMode(true)
+    };
+
+    const resetClick = () => {
+        totalReset();
+        setUnActiveMode(false)
+    };
 
     const setList = modes.map(item => (
         <li
             key={item.mode}
             className={cn({'active': activeMode === item.mode}, 'mode__item')}
-            onClick={() => setActiveMode(item.mode)}
+            onClick={() => modeChange(item.mode)}
         >{item.text}</li>
     ));
 
     return (
-        <div className='mode'>
-            <button className="btn btn-reset" onClick={totalReset}>Reset</button>
-            <ul className='mode__list'>
+        <div className={'mode'}>
+            <button className="btn btn-reset" onClick={resetClick}>Reset</button>
+            <ul className={cn('mode__list', {'un-active': unActiveMode})}>
                 {setList}
             </ul>
         </div>
