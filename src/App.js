@@ -15,8 +15,8 @@ function App() {
         {id: 8, player: null},
     ];
     const [squares, setSquares] = useState(defaultSquares);
-    const [countStep, setCountStep] = useState(0);
     const [scores, setScores] = useState({X: 0, O: 0});
+    const [activePlayer, setActivePlayer] = useState('X');
     const winnerLine = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
         [0, 3, 6], [1, 4, 7], [2, 5, 8],
@@ -45,11 +45,11 @@ function App() {
 
     const clickHandler = e => {
         const num = e.target.dataset.num;
-        const player = countStep % 2 === 0 ? 'X' : 'O';
+        const player = activePlayer;
 
         if (!squares[num].player) {
             squares[num].player = player;
-            setCountStep(countStep + 1);
+            setActivePlayer(activePlayer === 'X' ? 'O' : 'X');
             setSquares(squares)
         }
 
@@ -65,7 +65,6 @@ function App() {
     };
 
     const reset = () => {
-        setCountStep(0);
         setSquares(defaultSquares);
     };
 
