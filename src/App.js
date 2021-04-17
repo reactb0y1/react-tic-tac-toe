@@ -48,14 +48,14 @@ function App() {
 
         const draw = squares.every(square => square.player !== null);
 
-        if (draw) {
-            blockingField();
-            return 'draw';
-        }
-
         if (win) {
             blockingField();
             return player;
+        }
+
+        if (draw) {
+            blockingField();
+            return 'draw';
         }
     };
 
