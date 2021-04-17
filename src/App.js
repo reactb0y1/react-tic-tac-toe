@@ -87,7 +87,7 @@ function App() {
 
     return (
         <>
-            <Header scores={scores} totalReset={totalReset}/>
+            <Header scores={scores} totalReset={totalReset} activePlayer={activePlayer}/>
             <div className="tic-tac-toe container">
                 <ul className="tic-tac-toe__list">
                     {setList}

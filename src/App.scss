@@ -51,6 +51,9 @@
 
 .player {
     display: flex;
+    transition: 300ms;
+    transform: scale(0.6);
+    opacity: 0.6;
 
     &__name {
         font-size: 60px;
@@ -61,18 +64,17 @@
         font-size: 30px;
     }
 
-    &--reverse {
+    &:last-child {
         flex-direction: row-reverse;
 
-        .player {
-
-            &__name {
-                margin: 0 0 0 30px;
-            }
-
-            &__count {
-
-            }
+        .player__name {
+            margin: 0 0 0 30px;
         }
+    }
+
+    &.active {
+        transform: scale(1);
+        opacity: 1;
+        transition: 300ms;
     }
 }
