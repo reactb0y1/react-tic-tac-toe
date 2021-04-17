@@ -67,21 +67,18 @@ function App() {
 
         if (activeMode === 'players' || player === 'X') {
             squares[num].player = player;
-            setActivePlayer(activePlayer === 'X' ? 'O' : 'X');
-            setSquares(squares);
         } else {
-            // empty squares
             const idsOfEmptySquares = squares
                 .filter(item => !item.player)
                 .map(item => item.id);
-
-            // ~random
-            const randomIndex = idsOfEmptySquares[0];
+            const rand = Math.floor(Math.random() * idsOfEmptySquares.length);
+            const randomIndex = idsOfEmptySquares[rand];
 
             squares[randomIndex].player = 'O';
-            setActivePlayer(activePlayer === 'X' ? 'O' : 'X');
-            setSquares(squares)
         }
+
+        setActivePlayer(activePlayer === 'X' ? 'O' : 'X');
+        setSquares(squares);
 
         const winner = isWinner(player);
 

@@ -4,8 +4,6 @@
     <list default="true" id="8bac4bc8-b3e2-4c28-bc57-d2bf766e46d7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mode/Mode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mode/Mode.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +18,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/App.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="27" column="15" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="15" />
+                <state relative-caret-position="63">
+                  <caret line="61" column="27" lean-forward="true" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#38#0" expanded="true" />
                   </folding>
@@ -355,11 +353,39 @@
       <option name="project" value="LOCAL" />
       <updated>1618669337380</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="modes, activeMode, setActiveMode: Mode =&gt; App">
+      <created>1618670822577</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1618670822577</updated>
+    </task>
+    <task id="LOCAL-00025" summary="App: fix win on last step">
+      <created>1618670948070</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1618670948070</updated>
+    </task>
+    <task id="LOCAL-00026" summary="App: mode: play with computer (without random)">
+      <created>1618678285847</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1618678285862</updated>
+    </task>
+    <task id="LOCAL-00027" summary="App: mode: play with computer (with random)">
+      <created>1618678900017</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1618678900017</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32885000" />
+    <option name="totallyTimeSpent" value="38866000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
@@ -371,7 +397,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.18880208" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32552084" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -452,7 +478,11 @@
     <MESSAGE value="App: use data from active player" />
     <MESSAGE value="Highlight active player" />
     <MESSAGE value="App: blockingField()" />
-    <option name="LAST_COMMIT_MESSAGE" value="App: blockingField()" />
+    <MESSAGE value="modes, activeMode, setActiveMode: Mode =&gt; App" />
+    <MESSAGE value="App: fix win on last step" />
+    <MESSAGE value="App: mode: play with computer (without random)" />
+    <MESSAGE value="App: mode: play with computer (with random)" />
+    <option name="LAST_COMMIT_MESSAGE" value="App: mode: play with computer (with random)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -543,8 +573,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="27" column="15" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="15" />
+        <state relative-caret-position="63">
+          <caret line="61" column="27" lean-forward="true" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
