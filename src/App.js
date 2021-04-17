@@ -25,6 +25,13 @@ function App() {
         [0, 4, 8], [2, 4, 6],
     ];
 
+    const modes = [
+        {mode: 'comp', text: "Player VS Computer"},
+        {mode: 'players', text: "Player VS Player"},
+    ];
+
+    const [activeMode, setActiveMode] = useState(modes[0].mode);
+
     const blockingField = () => {
         setBlockedField(true);
         setTimeout(() => setBlockedField(false), 1000);
@@ -96,12 +103,22 @@ function App() {
 
     return (
         <>
-            <Header scores={scores} totalReset={totalReset} activePlayer={activePlayer}/>
+
+            <Header
+                scores={scores}
+                totalReset={totalReset}
+                activePlayer={activePlayer}
+                modes={modes}
+                activeMode={activeMode}
+                setActiveMode={setActiveMode}
+            />
+
             <div className="tic-tac-toe container">
                 <ul className={cn("tic-tac-toe__list", {'blocked': blockedField})}>
                     {setList}
                 </ul>
             </div>
+
         </>
     );
 }

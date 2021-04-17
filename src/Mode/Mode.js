@@ -2,16 +2,9 @@ import {useState} from 'react';
 import cn from 'classnames';
 import './Mode.scss';
 
-const Mode = ({totalReset}) => {
-
-    const modes = [
-        {mode: 'comp', text: "Player VS Computer"},
-        {mode: 'players', text: "Player VS Player"},
-    ];
+const Mode = ({totalReset, modes, activeMode, setActiveMode}) => {
 
     const [unActiveMode, setUnActiveMode] = useState(false);
-
-    const [activeMode, setActiveMode] = useState(modes[0].mode);
 
     const modeChange = bar => {
         setActiveMode(bar);
