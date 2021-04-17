@@ -12,6 +12,13 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         margin-top: var(--gap);
+        transition: 300ms;
+
+        &.blocked {
+            pointer-events: none;
+            opacity: .6;
+            transition: 300ms;
+        }
     }
 
     &__cell {

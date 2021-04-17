@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import cn from 'classnames';
 import './App.scss';
 import Header from "./Header/Header";
 
@@ -17,11 +18,17 @@ function App() {
     const [squares, setSquares] = useState(defaultSquares);
     const [scores, setScores] = useState({X: 0, O: 0});
     const [activePlayer, setActivePlayer] = useState('X');
+    const [blockedField, setBlockedField] = useState(false);
     const winnerLine = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
         [0, 3, 6], [1, 4, 7], [2, 5, 8],
         [0, 4, 8], [2, 4, 6],
     ];
+
+    const blockingField = () => {
+        setBlockedField(true);
+        setTimeout(() => setBlockedField(false), 1000);
+    };
 
     const isWinner = player => {
         const squaresPlayer = squares.reduce((indexes, item, index) => {
@@ -35,10 +42,12 @@ function App() {
         const draw = squares.every(square => square.player !== null);
 
         if (draw) {
+            blockingField();
             return 'draw';
         }
 
         if (win) {
+            blockingField();
             return player;
         }
     };
@@ -89,7 +98,7 @@ function App() {
         <>
             <Header scores={scores} totalReset={totalReset} activePlayer={activePlayer}/>
             <div className="tic-tac-toe container">
-                <ul className="tic-tac-toe__list">
+                <ul className={cn("tic-tac-toe__list", {'blocked': blockedField})}>
                     {setList}
                 </ul>
             </div>
