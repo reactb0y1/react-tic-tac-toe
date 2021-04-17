@@ -2,7 +2,7 @@ import {useState} from 'react';
 import cn from 'classnames';
 import './Mode.scss';
 
-const Mode = () => {
+const Mode = ({totalReset}) => {
 
     const modes = [
         {mode: 'comp', text: "Player VS Computer"},
@@ -14,15 +14,18 @@ const Mode = () => {
     const setList = modes.map(item => (
         <li
             key={item.mode}
-            className={cn({'active': activeMode === item.mode}, 'mode')}
+            className={cn({'active': activeMode === item.mode}, 'mode__item')}
             onClick={() => setActiveMode(item.mode)}
         >{item.text}</li>
     ));
 
     return (
-        <ul>
-            {setList}
-        </ul>
+        <div className='mode'>
+            <button className="btn btn-reset" onClick={totalReset}>Reset</button>
+            <ul className='mode__list'>
+                {setList}
+            </ul>
+        </div>
     )
 };
 

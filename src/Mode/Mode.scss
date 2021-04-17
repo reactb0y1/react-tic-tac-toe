@@ -1,14 +1,33 @@
 .mode {
-    background: antiquewhite;
-    padding: 5px 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: 300ms;
-    opacity: 0.6;
+    display: grid;
+    grid-gap: 1em;
+    grid-auto-flow: column;
 
-    &.active {
-        background: burlywood;
+    &__list {
         transition: 300ms;
-        opacity: 1;
+    }
+
+    &__item {
+        background: antiquewhite;
+        padding: 5px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: 300ms;
+        opacity: 0.6;
+
+        &.active {
+            background: burlywood;
+            transition: 300ms;
+            opacity: 1;
+        }
+    }
+
+    &--list-hide {
+        .mode__list {
+            transform: translateX(calc(-100% - 1em));
+            opacity: 0;
+            visibility: hidden;
+            transition: 300ms;
+        }
     }
 }

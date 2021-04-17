@@ -40,6 +40,7 @@
     padding: 0.5em 2.5em;
     border-radius: 10px;
     transition: var(--transition);
+    z-index: 1;
 
     &:hover, &:active, &:focus {
         transition: var(--transition);

@@ -9,8 +9,7 @@ const Header = ({scores, totalReset}) => {
                 <h3 className="player__name">X</h3>
                 <p className="player__count">{scores.X}</p>
             </div>
-            <button className="btn btn-reset" onClick={totalReset}>Reset</button>
-            <Mode/>
+            <Mode totalReset={totalReset}/>
             <div className="player player--reverse">
                 <h3 className="player__name">O</h3>
                 <p className="player__count">{scores.O}</p>
