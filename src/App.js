@@ -26,8 +26,8 @@ function App() {
     ];
 
     const modes = [
-        {mode: 'comp', text: "Player VS Computer"},
         {mode: 'players', text: "Player VS Player"},
+        {mode: 'comp', text: "Player VS Computer"},
     ];
 
     const [activeMode, setActiveMode] = useState(modes[0].mode);
@@ -59,12 +59,26 @@ function App() {
         }
     };
 
-    const clickHandler = e => {
+    const makeMove = e => {
         const num = e.target.dataset.num;
         const player = activePlayer;
 
-        if (!squares[num].player) {
+        if (squares[num].player) return false;
+
+        if (activeMode === 'players' || player === 'X') {
             squares[num].player = player;
+            setActivePlayer(activePlayer === 'X' ? 'O' : 'X');
+            setSquares(squares);
+        } else {
+            // empty squares
+            const idsOfEmptySquares = squares
+                .filter(item => !item.player)
+                .map(item => item.id);
+
+            // ~random
+            const randomIndex = idsOfEmptySquares[0];
+
+            squares[randomIndex].player = 'O';
             setActivePlayer(activePlayer === 'X' ? 'O' : 'X');
             setSquares(squares)
         }
@@ -94,7 +108,7 @@ function App() {
         return (
             <li
                 className="tic-tac-toe__cell"
-                onClick={clickHandler}
+                onClick={makeMove}
                 key={id}
                 data-num={id}
             >{squares[id].player}</li>
