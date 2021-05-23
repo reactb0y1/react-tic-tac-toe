@@ -1,8 +1,7 @@
-import Mode from '../Mode/Mode'
 import cn from 'classnames';
 import './Header.scss';
 
-const Header = ({scores, totalReset, activePlayer, modes, activeMode, setActiveMode}) => {
+const Header = ({scores, totalReset, activePlayer}) => {
 
     return (
         <header className="header">
@@ -13,12 +12,7 @@ const Header = ({scores, totalReset, activePlayer, modes, activeMode, setActiveM
 
             </div>
 
-            <Mode
-                totalReset={totalReset}
-                modes={modes}
-                activeMode={activeMode}
-                setActiveMode={setActiveMode}
-            />
+            <button className="btn btn-reset" onClick={totalReset}>Reset</button>
 
             <div className={cn("player", {'active': activePlayer === 'O'})}>
                 <h3 className="player__name">O</h3>
