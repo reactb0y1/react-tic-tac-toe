@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import cn from 'classnames';
 import './App.scss';
 import Header from "./Header/Header";
@@ -81,11 +81,28 @@ function App() {
 
         if (activeMode === 'players' || player === 'X') {
             squares[num].player = player;
-        } else {
+        }
+
+        if (activeMode === 'comp') {
             const randomIndex = computerMakeMove();
             blockingFieldFast();
             setTimeout(() => {
-                squares[randomIndex].player = 'O'
+                if (randomIndex) {
+                    squares[randomIndex].player = 'O';
+                }
+                setActivePlayer('X');
+                setSquares(squares);
+
+                const winner = isWinner(player);
+
+                if (winner === 'draw') {
+                    setTimeout(reset, 1000);
+                } else if (winner) {
+                    setTimeout(reset, 1000);
+                    scores[player] = scores[player] + 1;
+                    setScores(scores)
+                }
+
             }, 1000)
         }
 

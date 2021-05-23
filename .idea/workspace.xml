@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bac4bc8-b3e2-4c28-bc57-d2bf766e46d7" name="Default Changelist" comment="App: mode: play with computer (with random)">
+    <list default="true" id="8bac4bc8-b3e2-4c28-bc57-d2bf766e46d7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,37 +12,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.47584188">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/App.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-238">
-                  <caret line="21" column="27" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="27" />
-                  <folding>
-                    <element signature="e#0#38#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/App.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="99" column="36" lean-forward="true" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -63,6 +45,7 @@
       <find>set</find>
       <find>activePlayer</find>
       <find>.player</find>
+      <find>usee</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -167,7 +150,7 @@
       <workItem from="1618221362858" duration="20159000" />
       <workItem from="1618898847634" duration="3017000" />
       <workItem from="1619856857206" duration="6032000" />
-      <workItem from="1621767138554" duration="1194000" />
+      <workItem from="1621767138554" duration="3734000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1618224314340</created>
@@ -365,11 +348,18 @@
       <option name="project" value="LOCAL" />
       <updated>1618680042685</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="App: blockedFieldFast">
+      <created>1621771010121</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1621771010121</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53425000" />
+    <option name="totallyTimeSpent" value="55965000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
@@ -466,7 +456,8 @@
     <MESSAGE value="App: fix win on last step" />
     <MESSAGE value="App: mode: play with computer (without random)" />
     <MESSAGE value="App: mode: play with computer (with random)" />
-    <option name="LAST_COMMIT_MESSAGE" value="App: mode: play with computer (with random)" />
+    <MESSAGE value="App: blockedFieldFast" />
+    <option name="LAST_COMMIT_MESSAGE" value="App: blockedFieldFast" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -557,8 +548,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="21" column="27" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="27" />
+        <state relative-caret-position="459">
+          <caret line="99" column="36" lean-forward="true" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
