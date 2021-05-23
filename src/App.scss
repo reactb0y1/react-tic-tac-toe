@@ -14,10 +14,13 @@
         margin-top: var(--gap);
         transition: 300ms;
 
-        &.blocked {
+        &.blocked, &.blocked-fast {
             pointer-events: none;
-            opacity: .6;
             transition: 300ms;
+        }
+
+        &.blocked {
+            opacity: .6;
         }
     }
 

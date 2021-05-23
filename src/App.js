@@ -19,6 +19,7 @@ function App() {
     const [scores, setScores] = useState({X: 0, O: 0});
     const [activePlayer, setActivePlayer] = useState('X');
     const [blockedField, setBlockedField] = useState(false);
+    const [blockedFieldFast, setBlockedFieldFast] = useState(false);
     const winnerLine = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
         [0, 3, 6], [1, 4, 7], [2, 5, 8],
@@ -35,6 +36,19 @@ function App() {
     const blockingField = () => {
         setBlockedField(true);
         setTimeout(() => setBlockedField(false), 1000);
+    };
+
+    const blockingFieldFast = () => {
+        setBlockedFieldFast(true);
+        setTimeout(() => setBlockedFieldFast(false), 1000);
+    };
+
+    const computerMakeMove = () => {
+        const idsOfEmptySquares = squares
+            .filter(item => !item.player)
+            .map(item => item.id);
+        const rand = Math.floor(Math.random() * idsOfEmptySquares.length);
+        return idsOfEmptySquares[rand];
     };
 
     const isWinner = player => {
@@ -68,13 +82,11 @@ function App() {
         if (activeMode === 'players' || player === 'X') {
             squares[num].player = player;
         } else {
-            const idsOfEmptySquares = squares
-                .filter(item => !item.player)
-                .map(item => item.id);
-            const rand = Math.floor(Math.random() * idsOfEmptySquares.length);
-            const randomIndex = idsOfEmptySquares[rand];
-
-            squares[randomIndex].player = 'O';
+            const randomIndex = computerMakeMove();
+            blockingFieldFast();
+            setTimeout(() => {
+                squares[randomIndex].player = 'O'
+            }, 1000)
         }
 
         setActivePlayer(activePlayer === 'X' ? 'O' : 'X');
@@ -112,6 +124,12 @@ function App() {
         )
     });
 
+    const listClass = cn(
+        "tic-tac-toe__list",
+        {'blocked': blockedField},
+        {'blocked-fast': blockedFieldFast},
+    );
+
     return (
         <>
 
@@ -125,7 +143,7 @@ function App() {
             />
 
             <div className="tic-tac-toe container">
-                <ul className={cn("tic-tac-toe__list", {'blocked': blockedField})}>
+                <ul className={listClass}>
                     {setList}
                 </ul>
             </div>
